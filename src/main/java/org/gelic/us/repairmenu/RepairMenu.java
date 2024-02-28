@@ -133,6 +133,7 @@ public final class RepairMenu extends JavaPlugin implements Listener {
 
         for (ItemStack item : player.getInventory().getContents()) {
             if (item != null && isTool(item.getType())) {
+                System.out.println(isTool(item.getType()));
                 item.setDurability((short) 0);
             }
         }

@@ -9,12 +9,12 @@ RepairItem es un plugin de Minecraft que permite a los jugadores reparar su arma
 - Allows players to open a menu to repair their armor and tools.
 - Calculates the repair cost based on a fixed value.
 - Connects with the Vault API to handle the server's economy.
-- Compatible with the SimpleEco economy plugin.
+- Compatible with the SimpleEco, Azurite economy plugin.
 
 - Permite a los jugadores abrir un menú para reparar su armadura y herramientas.
 - Calcula el costo de la reparación basado en un valor fijo.
 - Conecta con la API de Vault para manejar la economía del servidor.
-- Compatible con el plugin de economía SimpleEco.
+- Compatible con el plugin de economía SimpleEco, Azurite, etc.
 
 ## Commands / Comandos
 - **/repairmenu**: Opens a menu to repair the player's armor and tools.
