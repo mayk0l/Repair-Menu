@@ -73,7 +73,7 @@ public final class RepairMenu extends JavaPlugin implements Listener {
 
         ItemStack blackGlass = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 15);
         ItemMeta glassMeta = blackGlass.getItemMeta();
-        glassMeta.setDisplayName("");
+        glassMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&b"));
         blackGlass.setItemMeta(glassMeta);
 
         // Add black glass panels
