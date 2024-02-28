@@ -1,0 +1,11 @@
+name: RepairMenu
+version: '${project.version}'
+main: org.gelic.us.repairmenu.RepairMenu
+author: mayk0l
+
+commands:
+  repairmenu:
+    description: Abre el menu de reparacion de armaduras
+    usage: /repairmenu
+
+depend: [Vault]
