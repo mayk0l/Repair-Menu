@@ -30,12 +30,17 @@ RepairItem es un plugin de Minecraft que permite a los jugadores reparar su arma
 1. Make sure you have Spigot installed on your server.
 2. Download the RepairItem.jar plugin.
 3. Place RepairItem.jar in the plugins folder of your server.
-4. Restart or reload your server.
+4. Make sure you have Vault installed on your server and configured properly.
+5. Install a compatible economy system plugin that works with Vault (e.g., SimpleEco).
+6. Restart or reload your server.
 
 1. Asegúrate de tener Spigot instalado en tu servidor.
 2. Descarga el plugin RepairItem.jar.
 3. Coloca RepairItem.jar en la carpeta de plugins de tu servidor.
-4. Reinicia o recarga tu servidor.
+4. Asegúrate de tener Vault instalado en tu servidor y configurado correctamente.
+5. Instala un plugin de sistema de economía compatible que funcione con Vault (por ejemplo, SimpleEco).
+6. Reinicia o recarga tu servidor.
+
 
 ## Configuration / Configuración
 No configuration is required. The plugin automatically connects to Vault and uses the server's economy.
