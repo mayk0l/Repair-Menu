@@ -1,7 +1,6 @@
 package org.gelic.us.repairmenu;
 
 import net.milkbowl.vault.economy.Economy;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,7 +17,6 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public final class RepairMenu extends JavaPlugin implements Listener {
@@ -93,7 +90,7 @@ public final class RepairMenu extends JavaPlugin implements Listener {
 
 
         List<String> lore = new ArrayList<>();
-        lore.add(ChatColor.GRAY + "Click to repair your amor.");
+        lore.add(ChatColor.GRAY + "Click to repair your armor.");
         lore.add(ChatColor.YELLOW + "Cost: $10.0");
 
         repairMeta.setLore(lore);
@@ -116,10 +113,16 @@ public final class RepairMenu extends JavaPlugin implements Listener {
                 double repairCost = calculateRepairCost(player);
                 if (economy.has(player, repairCost)) {
                     economy.withdrawPlayer(player, repairCost);
-                    repairArmor(player);
-                    player.sendMessage("Your armor has been repaired for a cost of " + repairCost + " coins.");
+                    int repaired = 0;
+                    for (ItemStack item : player.getInventory().getContents()) {
+                        if (repairArmor(item)) repaired++;
+                }   if (repaired > 0) {
+                        player.sendMessage(ChatColor.AQUA + "Inventory successfully repaired for $" + repairCost + ".");
+                    } else {
+                        player.sendMessage(ChatColor.AQUA + "You don't have items to repair.");
+                    }
                 } else {
-                    player.sendMessage("You don't have enough coins to repair your armor.");
+                    player.sendMessage(ChatColor.RED + "You don't have enough coins to repair your armor and tools.");
                 }
             }
         }
@@ -129,16 +132,13 @@ public final class RepairMenu extends JavaPlugin implements Listener {
         return 10.0;
     }
 
-    private void repairArmor(Player player) {
+    private boolean repairArmor(ItemStack item){
+        if (item == null) return false;
+        if (!isTool(item.getType())) return false;
 
-        for (ItemStack item : player.getInventory().getContents()) {
-            if (item != null && isTool(item.getType())) {
-                System.out.println(isTool(item.getType()));
-                item.setDurability((short) 0);
-            }
-        }
-
-        player.updateInventory();
+        if (item.getDurability() == 0) return false;
+        item.setDurability((short) 0);
+        return true;
     }
 
     private boolean isTool(Material material) {
@@ -194,5 +194,4 @@ public final class RepairMenu extends JavaPlugin implements Listener {
                 return false;
         }
     }
-
 }
